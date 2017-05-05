@@ -81,52 +81,60 @@
         _maxNumber = self.maxNumber == 0 ? 1 : self.maxNumber;
         _text = @"1";
         
-        self.layer.borderWidth = 1;
-        self.layer.borderColor = _borderColor.CGColor;
-        self.layer.masksToBounds = YES;
-        
-        /**  加号按钮  */
-        JGMenusBtn *addBtn = [JGMenusBtn buttonWithType:UIButtonTypeCustom];
-        addBtn.enabled = self.maxNumber > 1;
-        [addBtn setTitle:@" + " forState:UIControlStateNormal];
-        [addBtn addTarget:self action:@selector(addBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:addBtn];
-        self.addBtn = addBtn;
-        
-        /**  加号右边分割线  */
-        UIView *leftLineView = [UIView new];
-        leftLineView.backgroundColor = _borderColor;
-        [self addSubview:leftLineView];
-        self.leftLineView = leftLineView;
-        
-        /**  减号按钮  */
-        JGMenusBtn *delBtn = [JGMenusBtn buttonWithType:UIButtonTypeCustom];
-        [delBtn setTitle:@" - " forState:UIControlStateNormal];
-        delBtn.enabled = NO;
-        [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:delBtn];
-        self.delBtn = delBtn;
-        
-        /**  减号右边分割线  */
-        UIView *rightLineView = [UIView new];
-        rightLineView.backgroundColor = _borderColor;
-        [self addSubview:rightLineView];
-        self.rightLineView = rightLineView;
-        
-        /**  输入框  */
-        UITextField *numText = [[UITextField alloc] init];
-        numText.delegate = self;
-        numText.keyboardType = UIKeyboardTypeNumberPad;
-        numText.textAlignment = NSTextAlignmentCenter;
-        numText.text = self.text;
-        numText.font = [UIFont systemFontOfSize:20];
-        [numText addTarget:self action:@selector(textFieldContentToChange:) forControlEvents:UIControlEventEditingChanged];
-        [self addSubview:numText];
-        self.numText = numText;
+        // 创建本类UI
+        [self createSelfUI];
         
         self.btnColor = _borderColor;
     }
     return self;
+}
+
+#pragma - mark      ---------- 创建本类UI ----------
+- (void)createSelfUI {
+    
+    // 设置边框
+    self.layer.borderWidth = 1;
+    self.layer.borderColor = _borderColor.CGColor;
+    self.layer.masksToBounds = YES;
+    
+    /**  加号按钮  */
+    JGMenusBtn *addBtn = [JGMenusBtn buttonWithType:UIButtonTypeCustom];
+    addBtn.enabled = self.maxNumber > 1;
+    [addBtn setTitle:@" + " forState:UIControlStateNormal];
+    [addBtn addTarget:self action:@selector(addBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:addBtn];
+    self.addBtn = addBtn;
+    
+    /**  加号右边分割线  */
+    UIView *leftLineView = [UIView new];
+    leftLineView.backgroundColor = _borderColor;
+    [self addSubview:leftLineView];
+    self.leftLineView = leftLineView;
+    
+    /**  减号按钮  */
+    JGMenusBtn *delBtn = [JGMenusBtn buttonWithType:UIButtonTypeCustom];
+    [delBtn setTitle:@" - " forState:UIControlStateNormal];
+    delBtn.enabled = NO;
+    [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:delBtn];
+    self.delBtn = delBtn;
+    
+    /**  减号右边分割线  */
+    UIView *rightLineView = [UIView new];
+    rightLineView.backgroundColor = _borderColor;
+    [self addSubview:rightLineView];
+    self.rightLineView = rightLineView;
+    
+    /**  输入框  */
+    UITextField *numText = [[UITextField alloc] init];
+    numText.delegate = self;
+    numText.keyboardType = UIKeyboardTypeNumberPad;
+    numText.textAlignment = NSTextAlignmentCenter;
+    numText.text = self.text;
+    numText.font = [UIFont systemFontOfSize:20];
+    [numText addTarget:self action:@selector(textFieldContentToChange:) forControlEvents:UIControlEventEditingChanged];
+    [self addSubview:numText];
+    self.numText = numText;
 }
 
 /**
