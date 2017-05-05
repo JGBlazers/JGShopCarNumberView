@@ -100,7 +100,7 @@
     /**  加号按钮  */
     JGMenusBtn *addBtn = [JGMenusBtn buttonWithType:UIButtonTypeCustom];
     addBtn.enabled = self.maxNumber > 1;
-    [addBtn setTitle:@" + " forState:UIControlStateNormal];
+    [addBtn setTitle:@"+" forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(addBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:addBtn];
     self.addBtn = addBtn;
@@ -113,7 +113,7 @@
     
     /**  减号按钮  */
     JGMenusBtn *delBtn = [JGMenusBtn buttonWithType:UIButtonTypeCustom];
-    [delBtn setTitle:@" - " forState:UIControlStateNormal];
+    [delBtn setTitle:@"-" forState:UIControlStateNormal];
     delBtn.enabled = NO;
     [delBtn addTarget:self action:@selector(delBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:delBtn];

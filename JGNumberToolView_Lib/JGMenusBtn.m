@@ -17,6 +17,10 @@
     return self;
 }
 
+- (CGRect)titleRectForContentRect:(CGRect)contentRect {
+    return CGRectMake(0, 0, contentRect.size.width, contentRect.size.height);
+}
+
 - (void)setEnabled:(BOOL)enabled {
     [super setEnabled:enabled];
     
