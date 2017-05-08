@@ -37,6 +37,14 @@
  */
 - (void)toolView:(JGNumberToolView *)toolView textField:(UITextField *)textField didChangeWithText:(NSString *)text;
 
+/**
+ *  工具条的数量达到最大的个数时调用
+ *
+ *  @param toolView 工具条对象
+ *  @param maxNum   最大个数
+ */
+- (void)toolView:(JGNumberToolView *)toolView inputToMaxNum:(NSInteger)maxNum;
+
 @end
 
 @interface JGNumberToolView : UIView

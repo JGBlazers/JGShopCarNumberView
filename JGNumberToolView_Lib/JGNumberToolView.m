@@ -191,6 +191,9 @@
     if (textField.text.integerValue >= self.maxNumber) {
         self.addBtn.enabled = NO;
         textField.text = [NSString stringWithFormat:@"%zd", self.maxNumber];
+        if (self.delegate && [self.delegate respondsToSelector:@selector(toolView:inputToMaxNum:)]) {
+            [self.delegate toolView:self inputToMaxNum:self.maxNumber];
+        }
     }
     
     self.delBtn.enabled = textField.text.integerValue > 1;
@@ -216,6 +219,10 @@
     
     self.numText.text = [NSString stringWithFormat:@"%zd", (self.numText.text.integerValue + 1)];
     self.text = self.numText.text;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(toolView:textField:didChangeWithText:)]) {
+        [self.delegate toolView:self textField:self.numText didChangeWithText:self.numText.text];
+    }
 }
 
 /**
@@ -233,6 +240,10 @@
     
     self.numText.text = [NSString stringWithFormat:@"%zd", count];
     self.text = self.numText.text;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(toolView:textField:didChangeWithText:)]) {
+        [self.delegate toolView:self textField:self.numText didChangeWithText:self.numText.text];
+    }
 }
 
 /**
